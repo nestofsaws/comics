@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bronze Age Comics: <%=item.name%></title>
+    <link rel="stylesheet" href="/style1.css">
+  </head>
+  <body>
+    <a href="/"><h1>Bronze Age Comics: single title</h1></a>
+    <dl>
+      <dt>Title name</dt>
+      <dd><%=item.name%></dd>
+      <% if (item.description) { %>
+      <dt>Description</dt>
+      <dd><%=item.description%></dd>
+      <% } %>
+      <dt>Issues</dt>
+      
+      <dd>
+        <% if (related_items.length > 0) { %>
+        <ul>
+          <% related_items.forEach(function(related_item) { %>
+          <li>
+            <a href="/issues/<%=related_item._id%>">
+              <%=related_item.name%>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        No issues have been added to this title.
+        <% } %>
+      </dd>
+    </dl>
+    <div class="control">
+      <h2>Add a new Issue</h2>
+      <form id="create-issue" method="post" action="/issues/">
+        <input type="hidden" name="item[title]" value="<%=item._id%>">
+        <!-- The line above links the issue to be created to this title. -->
+        <label>Issue name: <br>
+          <br><input name="item[name]" type="int" pattern="[0-9]+" required
+                   placeholder="1">
+        </label><br>
+        <label>Issue image URL:<br>
+          <input name="item[image]" type="url" size="80"
+                   placeholder="http://upload.wikimedia.org/wikipedia/en/5/54/AmazingSpider-Man1.jpg">
+        </label><br>
+        <button>Add</button>
+      </form>
+    </div>
+  </body>
+</html>

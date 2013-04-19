@@ -1,0 +1,36 @@
+<!-- issue search -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bronze Age Comics: Issues</title>
+    <link rel="stylesheet" href="/style1.css">
+  </head>
+  <body>
+    <a href="/"><h1>Bronze Age Comics: list issues</h1></a>
+    
+    <% if (items.length > 0) { %>
+    <ul>    
+      <!-- check title. set variable. write the header. loop through -->
+      <!-- new title? new header. -->
+      
+      <% items.forEach(function(item) { %>
+            <li><a href="/issues/<%=item._id%>"><%=item.title%></a>
+            <a href="/issues/<%=item._id%>"><%=item.name%></a></li>
+      <% }); %>
+      
+    </ul>
+    <% } else { %>
+    <div>No issues found.</div>
+    <% } %>
+    
+    
+    
+    <div class="control">
+      <h2>Search for issues by name</h2>
+      <form method="get" action="/issues/">
+        <label>Issue name: <input name="name"></label>
+        <button>Search</button>
+      </form>
+    </div>
+  </body>
+</html>

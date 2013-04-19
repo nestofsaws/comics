@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bronze Age Comics: Titles</title>
+    <link rel="stylesheet" href="/style1.css">
+  </head>
+  <body>
+    <a href="/"><h1>Bronze Age Comics: list titles</h1></a>
+    <% if (items.length > 0) { %>
+    <ul>
+      <% items.forEach(function(item) { %>
+      <li><a href="/titles/<%=item._id%>"><%=item.name%></a></li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <div>No titles have been added.</div>
+    <% } %>
+    <div class="control">
+      <h2>Add or update a new comic book title</h2>
+      <script>
+      function onFormSubmit(form) {
+        form.action = form.action + form.elements['item[id]'].value;
+        console.log(form.action);
+        return true;
+      } 
+      </script>
+      <form method="post" action="/titles/"
+            onsubmit="return onFormSubmit(this);">
+        <!-- The line above dynamically sets the PUT destination when the -->
+        <!-- form is submitted. -------------------------------------------->
+        <input type="hidden" name="_method" value="put">
+        <!-- The line above tells the server to treat this as a PUT request. -->
+        <label>Title ID (this creates the title uri)<br>
+          (lowercase letters only, no spaces):<br>
+          <input name="item[id]" type="text" pattern="[a-z]+" required
+                 placeholder="fantasticfour">
+        </label><br>
+        <label>Comic Book Title name:<br> 
+          <input name="item[name]" type="text" required
+                 placeholder="The Fantastic Four">
+        </label><br>
+        <label>Title description:<br>
+          <textarea name="item[description]" cols="80" rows="10" 
+                    placeholder="The Fantastic Four is a superhero team who gained superpowers after exposure to cosmic rays during a scientific mission to outer space."
+          ></textarea>
+        </label><br>
+        <button>Add or update</button>
+      </form>
+    </div>
+  </body>
+</html>

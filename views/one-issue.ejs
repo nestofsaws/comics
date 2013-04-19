@@ -7,7 +7,7 @@
   <body>
     <a href="/"><h1>Bronze Age Comics: single issue</h1></a>
     <dl>
-      <dt>Name</dt>
+      <dt>Issue number</dt>
       <dd><%=item.name%></dd>
       <dt>Title</dt>
       <dd><a href="/titles/<%=item.id%>"><%=item.title%></a></dd>
@@ -21,7 +21,7 @@
       <form method="post" action="/issues/<%=item._id%>">
         <input type="hidden" name="_method" value="put">
         <!-- The line above tells the server to treat this as a PUT request. -->
-        <label>Name: 
+        <label>Issue number: 
           <input name="item[name]" value="<%=item.name%>" type="text" required>
         </label>
         <label>Title: 

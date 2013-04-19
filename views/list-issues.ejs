@@ -10,8 +10,6 @@
     
     <% if (items.length > 0) { %>
     <ul>    
-      <!-- check title. set variable. write the header. loop through -->
-      <!-- new title? new header. -->
       
       <% items.forEach(function(item) { %>
             <li><a href="/issues/<%=item._id%>"><%=item.title%></a>
@@ -26,7 +24,7 @@
     
     
     <div class="control">
-      <h2>Search for issues by name</h2>
+      <h2>Search for issues by name or number</h2>
       <form method="get" action="/issues/">
         <label>Issue name: <input name="name"></label>
         <button>Search</button>

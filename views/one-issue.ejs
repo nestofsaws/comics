@@ -10,7 +10,7 @@
 		  	  
 	<div property="comicIssue" typeof="ComicIssue">
 		<div><span property="series" typeof="PeriodicalSeries">
-			<dl><dt>Issue Number</dt><dd property="issueNumber"><%=item.number%></dd></dl>
+			<dl><dt>Issue Number</dt><dd property="issueNumber"><%=item.name%></dd></dl>
 			<dl><dt>Title</dt><dd property="series" typeof="PeriodicalSeries"><dd property="name"><a property="url" href="/titles/<%=item.title%>" title="<%=item.title%>"><%=item.title%></a></dd></dd></dl>
 			<dl><dt>Writer</dt><dd property="writer" typeof="Person"><%=item.writer%></dd></dl>
 			<dl><dt>Penciler</dt><dd property="penciler" typeof="Person"><%=item.penciler%></dd></dl>

@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
   </head>
   <body vocab="http://schema.org/" typeof="Periodical Series">
-    <a href="/"><h1 property="name">Bronze Age Comics: single title</h1></a>
-	
-	<dl><dt>Title</dt><dd property="series" typeof="PeriodicalSeries"><dd property="name"><a property="url" href="/titles/<%=item.name%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
-	<dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
-    <dl><dt>Year Began</dt><dd property="startYear"><%=item.startyear%></dd></dl>
-
-	
-	
-    <dl>
-      <dt>Title name</dt>
-      <dd><%=item.name%></dd>
-      
-      <% if (item.description) { %>
-      <dt>Description</dt>
-      <dd><%=item.description%></dd>
-      <% } %>
-      <dt>Issues</dt>
-      
-      <dd>
-        <% if (related_items.length > 0) { %>
-        <ul>
-          <% related_items.forEach(function(related_item) { %>
-          <li>
-            <a href="/issues/<%=related_item._id%>">
-              <%=related_item.number%>
-            </a>
-          </li>
-          <% }); %>
+    <div id="banner">
+        <a href="/">
+            <span>Bronze Age Comics: <%=item.name%></a></span>
+        </a>
+    </div>
+    <div id="main">
+        <ul id="menu">
+	        <dl><dt>Title</dt><dd property="name" typeof="Intangible"><dd property="name"><a property="url" href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
+	        <dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
+            <dl><dt>Year Began</dt><dd property="startYear"><%=item.startyear%></dd></dl>
+            <% if (item.description) { %>
+            <dl><dt>Description</dt><dd property="startYear"><%=item.description%></dd></dl>
+            <% } %>
         </ul>
-        <% } else { %>
-        No issues have been added to this title.
-        <% } %>
-      </dd>
-    </dl>
-    <div class="control">
-      <h2>Add a new Issue</h2>
+	
+	<div class="content">
+            <div class="content_container">
+                <h2>Issues</h2>
+                    <% if (related_items.length > 0) { %>
+                    <ul>
+                    <% related_items.forEach(function(related_item) { %>
+                        <dd>
+                            <a href="/issues/<%=related_item._id%>">
+                                <%=related_item.number%>
+                            </a>
+                        </dd>
+                    <% }); %>
+                    </ul>
+                    <% } else { %>
+                    No issues have been added to this title.
+                    <% } %>
+    
+    
+    
+    <div class="content">
+        <div class="content_container">
+            <h2>Add a new Issue</h2>
       
       
       
@@ -78,8 +78,10 @@
                    placeholder="Gerry Conway">
         </label><br>
         <label>Orig. Published: <br>
-          <input name="item[datepub]" type="month" required
-                   placeholder="1969">
+            (Bronze Age Issues only (1970-1985)):<br>
+          <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
+                   placeholder="1972">
+                   
         </label><br>
         <label>Issue image URL:<br>
           <input name="item[image]" type="url" size="80"
@@ -87,6 +89,7 @@
         </label><br>
         <button>Add</button>
       </form>
+      </div>
     </div>
   </body>
 </html>

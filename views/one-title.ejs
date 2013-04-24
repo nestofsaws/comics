@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
   </head>
-  <body>
-    <a href="/"><h1>Bronze Age Comics: single title</h1></a>
+  <body vocab="http://schema.org/" typeof="Periodical Series">
+    <a href="/"><h1 property="name">Bronze Age Comics: single title</h1></a>
+	
+	<dl><dt>Title</dt><dd property="series" typeof="PeriodicalSeries"><dd property="name"><a property="url" href="/titles/<%=item.name%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
+	<dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
+    <dl><dt>Year Began</dt><dd property="startYear"><%=item.startyear%></dd></dl>
+
+	
+	
     <dl>
       <dt>Title name</dt>
       <dd><%=item.name%></dd>
+      
       <% if (item.description) { %>
       <dt>Description</dt>
       <dd><%=item.description%></dd>
@@ -21,7 +30,7 @@
           <% related_items.forEach(function(related_item) { %>
           <li>
             <a href="/issues/<%=related_item._id%>">
-              <%=related_item.name%>
+              <%=related_item.number%>
             </a>
           </li>
           <% }); %>
@@ -33,12 +42,44 @@
     </dl>
     <div class="control">
       <h2>Add a new Issue</h2>
+      
+      
+      
+      
+     
+      
       <form id="create-issue" method="post" action="/issues/">
         <input type="hidden" name="item[title]" value="<%=item._id%>">
         <!-- The line above links the issue to be created to this title. -->
-        <label>Issue name: <br>
-          <br><input name="item[name]" type="int" pattern="[0-9]+" required
-                   placeholder="1">
+        
+        <label>Issue number: <br>
+          <input name="item[number]" type="int" pattern="[0-9]+" required
+                   placeholder="122">
+        </label><br>
+        
+        <label>Writer: <br>
+          <input name="item[writer]" type="text" required
+                   placeholder="Gerry Conway">
+        </label><br>
+        <label>Penciler: <br>
+          <input name="item[penciler]" type="text" required
+                   placeholder="Gil Kane">
+        </label><br>
+        <label>Cover Artist: <br>
+          <input name="item[coverartist]" type="text" required
+                   placeholder="Gil Kane">
+        </label><br>
+        <label>Colorist: <br>
+          <input name="item[colorist]" type="text" required
+                   placeholder="Gil Kane">
+        </label><br>
+        <label>Letterer: <br>
+          <input name="item[letterer]" type="text" required
+                   placeholder="Gerry Conway">
+        </label><br>
+        <label>Orig. Published: <br>
+          <input name="item[datepub]" type="month" required
+                   placeholder="1969">
         </label><br>
         <label>Issue image URL:<br>
           <input name="item[image]" type="url" size="80"

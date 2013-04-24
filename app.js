@@ -1,10 +1,6 @@
-// This is a sample application which you can use as a starting point for your
-// project. The only parts you should *need* to change are indicated with `TODO`
-// below. However, you are welcome to change more if you wish.
-
 ////////////////////////////////////////////////////////////////////////////////
 
-var USER_OR_GROUP_NAME = 'nestofsaws'; // TODO: Insert GitHub username or group name.
+var USER_OR_GROUP_NAME = 'nestofsaws';
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -22,15 +18,12 @@ var app = utils.initializeWebApp();
 // Connect to your database.
 var db = utils.connectToDatabase(USER_OR_GROUP_NAME);
 
-// TODO: Start defining your resource handlers. You may just need to modify the
-// examples below, or you may need to add additional handlers by copying,
-// pasting, and modifying these examples.
 
 ////////////////////////////////////////////////////////////////////////////////
 // Example of handling PUT to create or update a resource. /////////////////////
 // Here we create or update an item using the ID specified in the URI. /////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/titles/:id',      // TODO: change to suit your URI design.
+app.put('/titles/:id',  
   function(req, res) {
   
     // Get the item ID from the URI.
@@ -40,7 +33,7 @@ app.put('/titles/:id',      // TODO: change to suit your URI design.
     // See the form in `views/list-titles.ejs`.
     var item = req.body.item;
     
-    item.type = 'title'; // TODO: change to the type of item you want
+    item.type = 'title'; // 
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -58,10 +51,10 @@ app.put('/titles/:id',      // TODO: change to suit your URI design.
 // Example of handling GET of a "collection" resource. /////////////////////////
 // Here we list all items of type `title`. /////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/titles/',         // TODO: change to suit your URI design. 
+app.get('/titles/',
   function(req, res) {
 
-    var item_type = 'title'; // TODO: change to the type of item you want.
+    var item_type = 'title';
 
     // Get all items of the specified type from the database.
     db.getAll(item_type, function(err, items) {
@@ -72,7 +65,7 @@ app.get('/titles/',         // TODO: change to suit your URI design.
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'list-titles',   // TODO: change to the name of your HTML template.
+          'list-titles',
           { items: items }
         );
       }
@@ -84,14 +77,14 @@ app.get('/titles/',         // TODO: change to suit your URI design.
 // Example of handling POST to create a resource. //////////////////////////////
 // Here we create an item and allow the ID to be created automatically. ////////
 ////////////////////////////////////////////////////////////////////////////////
-app.post('/issues/', // TODO: change to suit your URI design.
+app.post('/issues/',
   function(req, res) {
   
     // Get the item info that was POSTed from the input form.
     // See the form in `views/one-title.ejs`.
     var item = req.body.item;
 
-    item.type = 'issue'; // TODO: change to the type of item you want
+    item.type = 'issue';
 
     // Save the new item to the database. (No ID specified, it will be created.)
     db.save(item, function(err) {
@@ -109,7 +102,7 @@ app.post('/issues/', // TODO: change to suit your URI design.
 // Another example of handling PUT to update a resource. ///////////////////////
 // Here we update an item using the ID specified in the URI. ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/issues/:id', // TODO: change to suit your URI design.
+app.put('/issues/:id',
   function(req, res) {
   
     // Get the item ID from the URI.
@@ -119,7 +112,7 @@ app.put('/issues/:id', // TODO: change to suit your URI design.
     // See the form in `views/one-issue.ejs`.
     var item = req.body.item;
 
-    item.type = 'issue'; // TODO: change to the type of item you want
+    item.type = 'issue';
 
     // Save the new item to the database, specifying the ID.
     db.save(item_id, item, function(err) {
@@ -137,10 +130,10 @@ app.put('/issues/:id', // TODO: change to suit your URI design.
 // Another example of handling GET of a "collection" resource. /////////////////
 // This time we support filtering the list by some criteria (i.e. searching). //
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/issues/',          // TODO: change to suit your URI design. 
+app.get('/issues/',
   function(req, res) {
 
-    var item_type = 'issue'; // TODO: change to the type of item you want.
+    var item_type = 'issue';
 
     // Get items of the specified type that match the query.
     db.getSome(item_type, req.query, function(err, items) {
@@ -151,7 +144,7 @@ app.get('/issues/',          // TODO: change to suit your URI design.
       // Otherwise, use the returned data to render an HTML page.
       else {
         res.render(
-          'list-issues', // TODO: change to the name of your HTML template.
+          'list-issues',
           { items: items }
         );
       }
@@ -164,10 +157,10 @@ app.get('/issues/',          // TODO: change to suit your URI design.
 // This handler is more complicated, because we want to show not only the //////
 // item requested, but also links to a set of related items. ///////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/titles/:id',      // TODO: change to suit your URI design.
+app.get('/titles/:id',
   function(req, res) {
 
-    var item_type = 'title'; // TODO: change to the type of item you want.
+    var item_type = 'title';
 
     // Get the item ID from the URI.
     var item_id = req.params.id;
@@ -184,10 +177,10 @@ app.get('/titles/:id',      // TODO: change to suit your URI design.
       // Otherwise, get the related items associated with this item.
       else {
         
-        var related_type = 'issue'; // TODO: change to type of related item.
+        var related_type = 'issue';
 
         // Set our query to find the items related to the requested item.
-        req.query.title = item_id; // TODO: change `title` to reflect the
+        req.query.title = item_id; // `title` to reflect the
                                    // relation between the item fetched above
                                    // and the related items to be fetched below.
 
@@ -200,7 +193,7 @@ app.get('/titles/:id',      // TODO: change to suit your URI design.
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-            'one-title', // TODO: change to the name of your HTML template.
+            'one-title',
               { item: item, related_items: items }
             );
           }
@@ -216,10 +209,10 @@ app.get('/titles/:id',      // TODO: change to suit your URI design.
 // item requested, but also a list of potential related items, so that users ///
 // can select from a list when updating the item. //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/issues/:id',       // TODO: change to suit your URI design.
+app.get('/issues/:id',
   function(req, res) {
 
-    var item_type = 'issue'; // TODO: change to the type of item you want.
+    var item_type = 'issue';
 
     // Get the item ID from the URI.
     var item_id = req.params.id;
@@ -236,7 +229,7 @@ app.get('/issues/:id',       // TODO: change to suit your URI design.
       // Otherwise, get the items potentially related to this item.
       else {
         
-        var related_type = 'title'; // TODO: change to type of related item.
+        var related_type = 'title';
 
         // Get all items of the specified related type.
         db.getAll(related_type, function(err, items) {
@@ -247,7 +240,7 @@ app.get('/issues/:id',       // TODO: change to suit your URI design.
           // Otherwise, use the returned data to render an HTML page.
           else {
             res.render(
-              'one-issue', // TODO: change to name of your HTML template.
+              'one-issue',
               { item: item, related_items: items }
             );
           }

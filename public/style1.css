@@ -16,7 +16,7 @@
 body {
 	background: #666;
 	font-family: Arial, sans-serif;
-    font-size: 120%;
+    font-size: 100%;
 	text-rendering:optimizeLegibility;
 }
 
@@ -28,13 +28,13 @@ div {
 a:link {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #000000;
 	}
 	
 a:visited {
 	text-decoration: none;
 	outline: none;
-	color: #56A0D3;
+	color: #000000;
 	}
 	
 a:hover {
@@ -50,29 +50,34 @@ a:hover {
 	
 	}
 
-
-#logo {
-	position: absolute;
-	top: 10px; left: 10px; bottom: 10px;
-	min-height: 160px;
-}
-#logo a {
-	display: block;
-	height: 71px;
-	padding: 0 30px 0 0;
-	border: none;
-}
-
-
-.inside {
-	margin: 0 auto;
-	position: relative;
+#header {
+    font-family: "LeagueGothic", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 180%;
+	margin: 10px auto 2px;
+	
 	width: 960px;
+	border-bottom: 4px solid #000000;
+	-webkit-box-shadow: -2px -2px 3px rgba(255,255,255,.5);
+	-moz-box-shadow: -2px -2px 3px rgba(255,255,255,.5);
+	box-shadow: -2px -2px 3px rgba(255,255,255,.5);
+	background: -moz-linear-gradient(#56A0D3 0%, #FFFFFF 250%);  
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #56A0D3), color-stop(250%, #FFFFFF)); /* Safari 4+, Chrome 2+ */  
+    background: -webkit-linear-gradient(#56A0D3 0%, #FFFFFF 250%); /* Safari 5.1+, Chrome 10+ */  
+    background: -o-linear-gradient(#56A0D3 0%, #FFFFFF 250%); /* Opera 11.10 */  
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56A0D3', endColorstr='#FFFFFF'); /* IE6 & IE7 */  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#56A0D3', endColorstr='#FFFFFF')"; /* IE8+ */  
+    background: linear-gradient(#56A0D3 0%, #FFFFFF 250%); /* the standard */ 
+	text-shadow: 1px 1px 1px rgba(255,255,255,.5);
+	min-width: 400px;
 }
+
+
+
 #body {
 	margin: 0 auto;
 	position: relative;
-	width: 964px;
+    min-width: 400px;
 }
 
 

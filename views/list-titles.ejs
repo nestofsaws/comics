@@ -39,6 +39,20 @@
           <input name="item[name]" type="text" required
                  placeholder="The Fantastic Four">
         </label><br>
+        
+        
+        
+        <label>Comic Book Title Publisher:<br> 
+          <input name="item[imprint]" type="text" required
+                 placeholder="Marvel Comics">
+        </label><br>
+        <label>year Comic Book Title began:<br> 
+          <input name="item[startyear]" type="int" pattern="^\d{4}$" required
+                 placeholder="1961">
+        </label><br>
+        
+        
+        
         <label>Title description:<br>
           <textarea name="item[description]" cols="80" rows="10" 
                     placeholder="The Fantastic Four is a superhero team who gained superpowers after exposure to cosmic rays during a scientific mission to outer space."

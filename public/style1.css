@@ -101,3 +101,8 @@ a:hover {
     padding: 5px 10px;
 	background-color: #56A0D3;	
 }
+
+img{
+    width:100%;
+    max-width:200px;
+}

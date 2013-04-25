@@ -23,7 +23,7 @@
 			<dl><dt>Letterer</dt><dd property="letterer"><%=item.letterer%></dd></dl>
 			<dl><dt>Orig. Published</dt><dd property="datePublished"><%=item.datepub%></dd></dl>
 			<% if (item.image) { %>
-			<dl><dt>Image URL</dt><dd property="contentUrl"><img typeof="image" src="<%=item.image%>" alt="<%=item.name%>"></dd></dl>
+			<dl><dt>Image URL</dt><dd property="contentUrl">click to enlarge<a href="<%=item.image%>"><img typeof="image" src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
 			<% } %>
           </div>    
         </ul>    

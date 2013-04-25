@@ -5,27 +5,27 @@
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
   </head>
-  <body vocab="http://schema.org/" typeof="WebPage">
+  <body>
     <div id="banner">
         <a href="/">
             <span>Bronze Age Comics: <%=item.name%></span>
         </a>
     </div>
-    <div id="main" rel="mainContentOfPage">
+    <div id="main" vocab="http://schema.org/">
         <ul id="menu"> 
-          <div about="#issue" typeof="PeriodicalSeries">
-            <dl><dt>Title</dt><dd property="name"><a property="url" href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
-            <dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
-            <dl><dt>Year Began</dt><dd property="startYear"><%=item.startyear%></dd></dl>
+          <div class="PeriodicalSeries" typeof="Intangible/PeriodicalSeries">
+            <dl><dt>Title</dt><dd property="name"><a href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
+            <dl><dt>Publisher</dt><dd property="intangible/imprint"><%=item.imprint%></dd></dl>
+            <dl><dt>Year Began</dt><dd property="intangible/startYear"><%=item.startyear%></dd></dl>
             <% if (item.description) { %>
             <dl><dt>Description</dt><dd property="description"><%=item.description%></dd></dl>
             <% } %>
             </div> 
             <br>
             <br>
-            <div property="breadcrumb">  
+             
             <li><a href="/titles/">Go Back to All Titles</a></li>
-            </div>  
+             
         </ul>
 	
 	<div class="content">

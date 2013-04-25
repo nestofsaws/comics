@@ -5,25 +5,25 @@
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
   </head>
-  <body vocab="http://schema.org/" typeof="ComicIssue">
+  <body>
     <div id="banner">
         <a href="/">
             <span>Bronze Age Comics: <%=item.title%> <%=item.name%></span>
         </a>
-    </div>      	  
-	<div id="main" rel="mainContentOfPage">
+    </div>            
+	    <div id="main" vocab="http://schema.org/">
         <ul id="menu"> 
-          <div about="#issue" typeof="ComicIssue">
-			<dl><dt>Issue Number</dt><dd property="issueNumber"><%=item.name%></dd></dl>
-			<dl><dt>Title ID</dt><dd property="series"><a property="url" href="/titles/<%=item.title%>" title="<%=item.title%>"><%=item.title%></a></dd></dd></dl>
-            <dl><dt>Writer</dt><dd property="writer"><%=item.writer%></dd></dl>
-			<dl><dt>Penciler</dt><dd property="penciler"><%=item.penciler%></dd></dl>
-			<dl><dt>Cover Artist</dt><dd property="coverArtist"><%=item.coverartist%></dd></dl>
-			<dl><dt>Colorist</dt><dd property="colorist"><%=item.colorist%></dd></dl>
-			<dl><dt>Letterer</dt><dd property="letterer"><%=item.letterer%></dd></dl>
+          <div class="ComicIssue" typeof="CreativeWork/PeriodicalIssue/ComicIssue">
+			<dl><dt>Issue Number</dt><dd property="creativeWork/issueNumber"><%=item.name%></dd></dl>
+			<dl><dt>Title ID</dt><dd property="creativeWork/series"><a href="/titles/<%=item.title%>" title="<%=item.title%>"><%=item.title%></a></dd></dd></dl>
+            <dl><dt>Writer</dt><dd property="creator/writer"><%=item.writer%></dd></dl>
+			<dl><dt>Penciler</dt><dd property="creator/penciler"><%=item.penciler%></dd></dl>
+			<dl><dt>Cover Artist</dt><dd property="creator/coverArtist"><%=item.coverartist%></dd></dl>
+			<dl><dt>Colorist</dt><dd property="creator/colorist"><%=item.colorist%></dd></dl>
+			<dl><dt>Letterer</dt><dd property="creator/letterer"><%=item.letterer%></dd></dl>
 			<dl><dt>Orig. Published</dt><dd property="datePublished"><%=item.datepub%></dd></dl>
 			<% if (item.image) { %>
-			<dl><dt>Image URL</dt><dd property="contentUrl">click to enlarge<a href="<%=item.image%>"><img typeof="image" src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
+			<dl><dt>Image URL</dt><dd>click to enlarge<a property="image" href="<%=item.image%>"><img src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
 			<% } %>
           </div>    
         </ul>    

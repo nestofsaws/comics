@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta charset="UTF-8">
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
   </head>
-  <body vocab="http://schema.org/" typeof="Periodical Series">
+  <body vocab="http://schema.org/" typeof="WebPage">
     <div id="banner">
         <a href="/">
-            <span>Bronze Age Comics: <%=item.name%></a></span>
+            <span>Bronze Age Comics: <%=item.name%></span>
         </a>
     </div>
-    <div id="main">
-        <ul id="menu">
-	        <dl><dt>Title</dt><dd property="name" typeof="Intangible"><dd property="name"><a property="url" href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
-	        <dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
+    <div id="main" rel="mainContentOfPage">
+        <ul id="menu"> 
+          <div about="#issue" typeof="PeriodicalSeries">
+            <dl><dt>Title</dt><dd property="name"><a property="url" href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
+            <dl><dt>Publisher</dt><dd property="imprint"><%=item.imprint%></dd></dl>
             <dl><dt>Year Began</dt><dd property="startYear"><%=item.startyear%></dd></dl>
             <% if (item.description) { %>
-            <dl><dt>Description</dt><dd property="startYear"><%=item.description%></dd></dl>
+            <dl><dt>Description</dt><dd property="description"><%=item.description%></dd></dl>
             <% } %>
+            </div> 
+            <br>
+            <br>
+            <div property="breadcrumb">  
+            <li><a href="/titles/">Go Back to All Titles</a></li>
+            </div>  
         </ul>
 	
 	<div class="content">
@@ -26,9 +34,9 @@
                     <% if (related_items.length > 0) { %>
                     <ul>
                     <% related_items.forEach(function(related_item) { %>
-                        <dd>
+                        <dd typeof="relatedLink">
                             <a href="/issues/<%=related_item._id%>">
-                                <%=related_item.number%>
+                                <%=related_item.name%>
                             </a>
                         </dd>
                     <% }); %>
@@ -39,8 +47,6 @@
     
     
     
-    <div class="content">
-        <div class="content_container">
             <h2>Add a new Issue</h2>
       
       
@@ -53,7 +59,7 @@
         <!-- The line above links the issue to be created to this title. -->
         
         <label>Issue number: <br>
-          <input name="item[number]" type="int" pattern="[0-9]+" required
+          <input name="item[name]" type="int" pattern="[0-9]+" required
                    placeholder="122">
         </label><br>
         

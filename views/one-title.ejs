@@ -32,7 +32,7 @@
                     <% if (related_items.length > 0) { %>
                     <ul>
                     <% related_items.forEach(function(related_item) { %>
-                        <dd typeof="relatedLink">
+                        <dd>
                             <a href="/issues/<%=related_item._id%>">
                                 <%=related_item.name%>
                             </a>

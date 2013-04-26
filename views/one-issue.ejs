@@ -22,6 +22,8 @@
 			<dl><dt><h3>Cover Artist</h3></dt><dd property="creator/coverArtist"><%=item.coverartist%></dd></dl>
 			<dl><dt><h3>Colorist</h3></dt><dd property="creator/colorist"><%=item.colorist%></dd></dl>
 			<dl><dt><h3>Letterer</h3></dt><dd property="creator/letterer"><%=item.letterer%></dd></dl>
+            <dl><dt><h3>Inker</h3></dt><dd property="creator/inker"><%=item.inker%></dd></dl>
+            <dl><dt><h3>Editor</h3></dt><dd property="creator/editor"><%=item.editor%></dd></dl>
 			<dl><dt><h3>Orig. Published</h3></dt><dd property="datePublished"><%=item.datepub%></dd></dl>
 			<% if (item.image) { %>
 			<dl><dt><h3>Image URL</h3></dt><dd>click to enlarge<a property="image" href="<%=item.image%>"><img src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
@@ -68,13 +70,21 @@
             <input name="item[letterer]" type="text" required
                    placeholder="<%=item.letterer%>">
             </label><br>
+            <label>Inker: <br>
+            <input name="item[inker]" type="text" required
+                   placeholder="<%=item.inker%>">
+            </label><br>
+            <label>Editor: <br>
+            <input name="item[editor]" type="text" required
+                   placeholder="<%=item.editor%>">
+            </label><br>
             <label>Orig. Published: <br>
                 (Bronze Age Issues only (1970-1985)):<br>
             <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
                    placeholder="<%=item.datepub%>">
             </label><br>
             <label>Issue image URL:<br>
-            <input name="item[image]" type="url" size="60"
+            <input name="item[image]" type="url" size="80"
                    placeholder="<%=item.image%>">
             </label><br>
             <button>Update</button>

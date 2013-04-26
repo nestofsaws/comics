@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <meta charset="UTF-8">
     <title>Bronze Age Comics: Issues</title>
     <link rel="stylesheet" href="/style1.css">
-  </head>
-  <body>
-    <a href="/"><h1>Bronze Age Comics: list issues</h1></a>
-    <% if (items.length > 0) { %>
-    <ul>    
-      <% items.forEach(function(item) { %>
-        <li><a href="/issues/<%=item._id%>"><%=item.name%></a></li>
-      <% }); %> 
-    </ul>
-    <% } else { %>
-    <div>No issues found.</div>
-    <% } %>
-    <div class="control">
-      <h2>Search for issues by name or number</h2>
-      <form method="get" action="/issues/">
-        <label>Issue number: <input name="name"></label>
-        <button>Search</button>
-      </form>
-    </div>
+ </head>
+ <body>
+  <div id="banner">
+    <a href="/">
+        <span>Bronze Age Comics: all issues</span>
+	</a>
+  </div>
+  <div id="main">
+    <section id="menu">
+        <ul>
+        <h3>Issues</h3>
+        <% if (items.length > 0) { %>        
+		    <% items.forEach(function(item) { %>
+        <li><a href="/issues/<%=item._id%>"><%=item.title%> <%=item.name%></a></li>
+        <% }); %> 
+        <% } else { %>
+            No issues found.
+        <% } %>	
+        </ul>
+    </section> 
+	<section id="content">
+        <div id="primary">
+            <h3>Search for issues by name or number</h3><br>
+            <form method="get" action="/issues/">
+            <label>Issue number: <input name="name"></label>
+            <button>Search</button>
+            </form>
+        </div>
+    </section>    
   </body>
 </html>

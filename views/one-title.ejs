@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta charset="UTF-8">
+ <head>
+    <meta charset="UTF-8">
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
-  </head>
-  <body>
+ </head>
+ <body>
     <div id="banner">
         <a href="/">
             <span>Bronze Age Comics: <%=item.name%></span>
         </a>
     </div>
     <div id="main" vocab="http://schema.org/">
-        <ul id="menu"> 
+        <section id="menu">
+         <ul>
           <div class="PeriodicalSeries" typeof="Intangible/PeriodicalSeries">
-            <dl><dt>Title</dt><dd property="name"><a href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
-            <dl><dt>Publisher</dt><dd property="intangible/imprint"><%=item.imprint%></dd></dl>
-            <dl><dt>Year Began</dt><dd property="intangible/startYear"><%=item.startyear%></dd></dl>
+            <dl><dt><h3>Title</h3></dt><dd property="name"><a href="/titles/<%=item.id%>" title="<%=item.name%>"><%=item.name%></a></dd></dd></dl>
+            <dl><dt><h3>Publisher</h3></dt><dd property="intangible/imprint"><%=item.imprint%></dd></dl>
+            <dl><dt><h3>Year Began</h3></dt><dd property="intangible/startYear"><%=item.startyear%></dd></dl>
             <% if (item.description) { %>
-            <dl><dt>Description</dt><dd property="description"><%=item.description%></dd></dl>
+            <dl><dt><h3>Description</h3></dt><dd property="description"><%=item.description%></dd></dl>
             <% } %>
-            </div> 
             <br>
             <br>
-             
             <li><a href="/titles/">Go Back to All Titles</a></li>
-             
-        </ul>
-	
-	<div class="content">
-            <div class="content_container">
-                <h2>Issues</h2>
+         </ul>
+	    </section> 
+	    <section id="content">
+            <div id="primary">
+                <h3>Issues</h3>
                     <% if (related_items.length > 0) { %>
                     <ul>
                     <% related_items.forEach(function(related_item) { %>
@@ -44,58 +42,48 @@
                     <% } else { %>
                     No issues have been added to this title.
                     <% } %>
-    
-    
-    
-            <h2>Add a new Issue</h2>
-      
-      
-      
-      
-     
-      
-      <form id="create-issue" method="post" action="/issues/">
-        <input type="hidden" name="item[title]" value="<%=item._id%>">
-        <!-- The line above links the issue to be created to this title. -->
+                <h3>Add a new Issue</h3>
+                <form id="create-issue" method="post" action="/issues/">
+                <input type="hidden" name="item[title]" value="<%=item._id%>">
+                <!-- The line above links the issue to be created to this title. -->
         
-        <label>Issue number: <br>
-          <input name="item[name]" type="int" pattern="[0-9]+" required
+                <label>Issue number: <br>
+                <input name="item[name]" type="int" pattern="[0-9]+" required
                    placeholder="122">
-        </label><br>
-        
-        <label>Writer: <br>
-          <input name="item[writer]" type="text" required
+                </label><br>
+                <label>Writer: <br>
+                <input name="item[writer]" type="text" required
                    placeholder="Gerry Conway">
-        </label><br>
-        <label>Penciler: <br>
-          <input name="item[penciler]" type="text" required
+                </label><br>
+                <label>Penciler: <br>
+                <input name="item[penciler]" type="text" required
                    placeholder="Gil Kane">
-        </label><br>
-        <label>Cover Artist: <br>
-          <input name="item[coverartist]" type="text" required
+                </label><br>
+                <label>Cover Artist: <br>
+                <input name="item[coverartist]" type="text" required
                    placeholder="Gil Kane">
-        </label><br>
-        <label>Colorist: <br>
-          <input name="item[colorist]" type="text" required
+                </label><br>
+                <label>Colorist: <br>
+                <input name="item[colorist]" type="text" required
                    placeholder="Gil Kane">
-        </label><br>
-        <label>Letterer: <br>
-          <input name="item[letterer]" type="text" required
+                </label><br>
+                <label>Letterer: <br>
+                <input name="item[letterer]" type="text" required
                    placeholder="Gerry Conway">
-        </label><br>
-        <label>Orig. Published: <br>
-            (Bronze Age Issues only (1970-1985)):<br>
-          <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
+                </label><br>
+                <label>Orig. Published: <br>
+                    (Bronze Age Issues only (1970-1985)):<br>
+                <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
                    placeholder="1972">
-                   
-        </label><br>
-        <label>Issue image URL:<br>
-          <input name="item[image]" type="url" size="80"
+                 </label><br>
+                <label>Issue image URL:<br>
+                <input name="item[image]" type="url" size="80"
                    placeholder="http://upload.wikimedia.org/wikipedia/en/5/54/AmazingSpider-Man1.jpg">
-        </label><br>
-        <button>Add</button>
-      </form>
-      </div>
-    </div>
+                </label><br>
+                <button>Add</button>
+                </form>
+            </div>
+        </section>
+    </div>    
   </body>
 </html>

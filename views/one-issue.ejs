@@ -1,87 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta charset="UTF-8">
+ <head>
+    <meta charset="UTF-8">
     <title>Bronze Age Comics: <%=item.name%></title>
     <link rel="stylesheet" href="/style1.css">
-  </head>
-  <body>
+ </head>
+ <body>
     <div id="banner">
         <a href="/">
             <span>Bronze Age Comics: <%=item.title%> <%=item.name%></span>
         </a>
     </div>            
-	    <div id="main" vocab="http://schema.org/">
-        <ul id="menu"> 
+	<div id="main" vocab="http://schema.org/">
+     <section id="menu">
+        <ul> 
           <div class="ComicIssue" typeof="CreativeWork/PeriodicalIssue/ComicIssue">
-			<dl><dt>Issue Number</dt><dd property="creativeWork/issueNumber"><%=item.name%></dd></dl>
-			<dl><dt>Title ID</dt><dd property="creativeWork/series"><a href="/titles/<%=item.title%>" title="<%=item.title%>"><%=item.title%></a></dd></dd></dl>
-            <dl><dt>Writer</dt><dd property="creator/writer"><%=item.writer%></dd></dl>
-			<dl><dt>Penciler</dt><dd property="creator/penciler"><%=item.penciler%></dd></dl>
-			<dl><dt>Cover Artist</dt><dd property="creator/coverArtist"><%=item.coverartist%></dd></dl>
-			<dl><dt>Colorist</dt><dd property="creator/colorist"><%=item.colorist%></dd></dl>
-			<dl><dt>Letterer</dt><dd property="creator/letterer"><%=item.letterer%></dd></dl>
-			<dl><dt>Orig. Published</dt><dd property="datePublished"><%=item.datepub%></dd></dl>
+			<dl><dt><h3>Issue Number</h3></dt><dd property="creativeWork/issueNumber"><%=item.name%></dd></dl>
+			<dl><dt><h3>Title ID</h3></dt><dd property="creativeWork/series"><a href="/titles/<%=item.title%>" title="<%=item.title%>"><%=item.title%></a></dd></dd></dl>
+            <dl><dt><h3>Writer</h3></dt><dd property="creator/writer"><%=item.writer%></dd></dl>
+			<dl><dt><h3>Penciler</h3></dt><dd property="creator/penciler"><%=item.penciler%></dd></dl>
+			<dl><dt><h3>Cover Artist</h3></dt><dd property="creator/coverArtist"><%=item.coverartist%></dd></dl>
+			<dl><dt><h3>Colorist</h3></dt><dd property="creator/colorist"><%=item.colorist%></dd></dl>
+			<dl><dt><h3>Letterer</h3></dt><dd property="creator/letterer"><%=item.letterer%></dd></dl>
+			<dl><dt><h3>Orig. Published</h3></dt><dd property="datePublished"><%=item.datepub%></dd></dl>
 			<% if (item.image) { %>
-			<dl><dt>Image URL</dt><dd>click to enlarge<a property="image" href="<%=item.image%>"><img src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
+			<dl><dt><h3>Image URL</h3></dt><dd>click to enlarge<a property="image" href="<%=item.image%>"><img src="<%=item.image%>" alt="<%=item.name%>"></a></dd></dl>
 			<% } %>
           </div>    
         </ul>    
-        
-    <div class="content">
-            <div class="content_container">
-    <div class="control">
-      <h2>Update issue</h2>
-      <form method="post" action="/issues/<%=item._id%>">
-        <input type="hidden" name="_method" value="put">
-        <!-- The line above tells the server to treat this as a PUT request. -->
-        <label>Issue number:<br> 
-          <input name="item[name]" value="<%=item.name%>" type="int" pattern="[0-9]+" required>
-        </label><br>
-        <label>Title:<br> 
-           <select name="item[title]" required>
+      </section>  
+      <section id="content">
+        <div id="primary">
+        <h3>Update this issue</h3>
+        <form method="post" action="/issues/<%=item._id%>">
+            <input type="hidden" name="_method" value="put">
+            <!-- The line above tells the server to treat this as a PUT request. -->
+            <label>Issue number:<br> 
+            <input name="item[name]" value="<%=item.name%>" type="int" pattern="[0-9]+" required>
+            </label><br>
+            <label>Title:<br> 
+            <select name="item[title]" required>
             <% related_items.forEach(function(related_item) { %>
             <option value="<%=related_item._id%>"
               <% if (related_item._id === item.title) { %>selected<% } %>>
               <%=related_item.name%>
             </option>
             <% }); %>
-          </select>
-        </label><br>
-        <label>Writer: <br>
-          <input name="item[writer]" type="text" required
-                   placeholder="Gerry Conway">
-        </label><br>
-        <label>Penciler: <br>
-          <input name="item[penciler]" type="text" required
-                   placeholder="Gil Kane">
-        </label><br>
-        <label>Cover Artist: <br>
-          <input name="item[coverartist]" type="text" required
-                   placeholder="Gil Kane">
-        </label><br>
-        <label>Colorist: <br>
-          <input name="item[colorist]" type="text" required
-                   placeholder="Gil Kane">
-        </label><br>
-        <label>Letterer: <br>
-          <input name="item[letterer]" type="text" required
-                   placeholder="Gerry Conway">
-        </label><br>
-        <label>Orig. Published: <br>
-            (Bronze Age Issues only (1970-1985)):<br>
-          <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
-                   placeholder="1972">
-                   
-        </label><br>
-        <label>Issue image URL:<br>
-          <input name="item[image]" type="url" size="60"
-                   placeholder="http://upload.wikimedia.org/wikipedia/en/5/54/AmazingSpider-Man1.jpg">
-        </label><br>
-        <button>Update</button>
-      </form>
+            </select>
+            </label><br>
+            <label>Writer: <br>
+            <input name="item[writer]" type="text" required
+                   placeholder="<%=item.writer%>">
+            </label><br>
+            <label>Penciler: <br>
+            <input name="item[penciler]" type="text" required
+                   placeholder="<%=item.penciler%>">
+            </label><br>
+            <label>Cover Artist: <br>
+            <input name="item[coverartist]" type="text" required
+                   placeholder="<%=item.coverartist%>">
+            </label><br>
+            <label>Colorist: <br>
+            <input name="item[colorist]" type="text" required
+                   placeholder="<%=item.colorist%>">
+            </label><br>
+            <label>Letterer: <br>
+            <input name="item[letterer]" type="text" required
+                   placeholder="<%=item.letterer%>">
+            </label><br>
+            <label>Orig. Published: <br>
+                (Bronze Age Issues only (1970-1985)):<br>
+            <input name="item[datepub]" type="int" pattern="\b19(7[0-9]|8[0-5])\b" required
+                   placeholder="<%=item.datepub%>">
+            </label><br>
+            <label>Issue image URL:<br>
+            <input name="item[image]" type="url" size="60"
+                   placeholder="<%=item.image%>">
+            </label><br>
+            <button>Update</button>
+        </form>
       </div>
-      </div>
+      </section>
     </div>
   </body>
 </html>

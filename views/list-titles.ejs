@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <meta charset="UTF-8">
     <title>Bronze Age Comics: Titles</title>
     <link rel="stylesheet" href="/style1.css">
-  </head>
-  <body>
+ </head>
+ <body>
     <div id="banner">
         <a href="/">
             <span>Bronze Age Comics: List of Titles</span>
         </a>
     </div>
     <div id="main">
-        <ul id="menu">
+        <section id="menu">
+            <ul>
+            <h3>Titles</h3>
             <% if (items.length > 0) { %>
                 <% items.forEach(function(item) { %>
                 <li><a href="/titles/<%=item._id%>"><%=item.name%></a></li>
             <% }); %>
-        <% } else { %>
-            No titles have been added.
-         <% } %>
-        </ul>
-    
-        <div class="content">
-            <div class="content_container">
-                <h2>Add or update a new comic book title</h2>
+            <% } else { %>
+                No titles have been added.
+            <% } %>
+            </ul>
+        </section>
+        <section id="content">
+            <div id="primary">
+                <h3>Add or update a new comic book title</h3>
                 <script>
                     function onFormSubmit(form) {
                         form.action = form.action + form.elements['item[id]'].value;
@@ -38,6 +40,7 @@
                 <!-- form is submitted. -------------------------------------------->
                     <input type="hidden" name="_method" value="put">
                     <!-- The line above tells the server to treat this as a PUT request. -->
+                        <br>
                         <label>Title ID (this creates the title uri)<br>
                             (lowercase letters only, no spaces):<br>
                             <input name="item[id]" type="text" pattern="[a-z]+" required placeholder="fantasticfour">
@@ -45,21 +48,19 @@
                         <label>Comic Book Title name:<br> 
                             <input name="item[name]" type="text" required placeholder="The Fantastic Four">
                         </label><br>
-        
                         <label>Comic Book Title Publisher:<br> 
                             <input name="item[imprint]" type="text" required placeholder="Marvel Comics">
                         </label><br>
                         <label>year Comic Book Title began:<br> 
                             <input name="item[startyear]" type="int" pattern="^\d{4}$" required placeholder="1961">
                         </label><br>
-        
                         <label>Title description:<br>
                             <textarea name="item[description]" cols="60" rows="10" placeholder="The Fantastic Four is a superhero team who gained superpowers after exposure to cosmic rays during a scientific mission to outer space."></textarea>
                         </label><br>
                         <button>Add or update</button>
                 </form>
              </div>   
-        </div>
+        </section>
     </div>
   </body>
 </html>

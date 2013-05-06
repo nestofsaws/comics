@@ -20,6 +20,9 @@
 *primary*
 >Applied to a DIV tag. Enables CSS styles to be applied to the SECTION.id="content".
 
+*create-issue*
+>Applied to a FORM tag. A non-idempotent update link that posts a new issue with the specified metadata. The element must be set to FORM.method="post".
+
 **Class attributes**
 
 *Search*
@@ -41,7 +44,7 @@
 >Applied to an INPUT[text] element. The user-created uri of the title.
 
 *name*
->Applied to an INPUT[text] element. The formal title of a specific title.
+>May be applied to an INPUT[text] element for titles and/or applied to an INPUT[text] element for issues. The formal title of a specific title, or the issue number of a specific issue.
 
 *imprint*
 >Applied to an INPUT[text] element. The publisher of a title.
@@ -53,7 +56,31 @@
 >Applied to a TEXT AREA element. The description of the title.
 
 *writer*
->Applied to an INPUT[text] element. The user wants to see only titles that contain this text.
+>Applied to an INPUT[text] element. The person responsible for the story of the issue.
+
+*penciler*
+>Applied to an INPUT[text] element. The person responsible for rendering the story of the issue into visual form.
+
+*coverartist*
+>Applied to an INPUT[text] element. The person responsible for illustrating the front cover of the issue.
+
+*colorist*
+>Applied to an INPUT[text] element. The person responsible for adding color to the issue.
+
+*letterer*
+>Applied to an INPUT[text] element. The person responsible for writing the text of the issue.
+
+*inker*
+>Applied to an INPUT[text] element. The person responsible for using black ink to outline, shadow, and embellish the pencil illustrations of the issue (not tracing).
+
+*editor*
+>Applied to an INPUT[text] element. The person responsible for editing the content of the issue.
+
+*datepub*
+>Applied to an INPUT[int] element. The year the issue was published. Must be a four digit year between 1970 and 1985 (the Bronze Age of Comic Books).
+
+*image*
+>Applied to an INPUT[url] element. A link to the cover image of the issue.
 
 **Rel attributes**
 

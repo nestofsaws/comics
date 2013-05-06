@@ -28,9 +28,6 @@
 
 **Class attributes**
 
-*Search*
->Applied to a FORM tag. A templated query link to search for issues matching specified criteria. The element must be set to FORM.method="get".
-
 *PeriodicalSeries*
 >Applied to a FORM tag. A templated query link to search for titles matching specified criteria. The element must be set to FORM.method="get".
 

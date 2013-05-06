@@ -1,5 +1,4 @@
 
-
 #bronzeAgeComics
 
 ##Attribute Values
@@ -38,10 +37,23 @@
 
 **Name attributes**
 
+*id*
+>Applied to an INPUT[text] element. The user-created uri of the title.
+
+*name*
+>Applied to an INPUT[text] element. The formal title of a specific title.
+
+*imprint*
+>Applied to an INPUT[text] element. The publisher of a title.
+
+*startyear*
+>Applied to an INPUT[int] element. The year the title began publication. Must be a four digit year.
+
+*description* 
+>Applied to a TEXT AREA element. The description of the title.
+
 *writer*
 >Applied to an INPUT[text] element. The user wants to see only titles that contain this text.
-
-
 
 **Rel attributes**
 

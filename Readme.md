@@ -1,6 +1,6 @@
 
 
-#bronzAgeComics
+#bronzeAgeComics
 
 ##Attribute Values
 

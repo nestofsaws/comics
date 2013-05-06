@@ -20,6 +20,9 @@
 *primary*
 >Applied to a DIV tag. Enables CSS styles to be applied to the SECTION.id="content".
 
+*create-title*
+>Applied to a FORM tag. A non-idempotent update link that posts a new title with the specified metadata. The element must be set to FORM.method="post".
+
 *create-issue*
 >Applied to a FORM tag. A non-idempotent update link that posts a new issue with the specified metadata. The element must be set to FORM.method="post".
 
@@ -33,9 +36,6 @@
 
 *ComicIssue*
 >Applied to a FORM tag. A non-idempotent update link that posts a new title with the specified metadata. The element must be set to FORM.method="post".
-
-*PeriodicalSeries*
->Applied to a FORM tag. A templated query link to search for titles matching specified criteria. The element must be set to FORM.method="get".
 
 
 **Name attributes**
